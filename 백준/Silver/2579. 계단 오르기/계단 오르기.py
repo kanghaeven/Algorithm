@@ -2,8 +2,8 @@ import sys
 input = sys.stdin.readline
 n = int(input()) # 계단 수
 
-# 한 번 계산된 결과를 메모이제이션 하기 위한 리스트 초기화
-stair = [0] * 301 # 점수의 합
+# 계단의 개수는 300이하의 자연수
+stair = [0] * 301 # 점수의 합 
 s = [0] * 301 # 점수
 
 for i in range(n):
