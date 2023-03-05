@@ -1,4 +1,3 @@
-
 N = int(input())
 # paper = [list(map(int, input().split())) for _ in range(N)]
 area = [[0 for _ in range(1001)] for _ in range(1001)]
