@@ -26,6 +26,7 @@
 |17144. 미세먼지 안녕！|[링크](./%EB%B0%B1%EC%A4%80/Gold/17144.%E2%80%85%EB%AF%B8%EC%84%B8%EB%A8%BC%EC%A7%80%E2%80%85%EC%95%88%EB%85%95%EF%BC%81/%EB%AF%B8%EC%84%B8%EB%A8%BC%EC%A7%80%E2%80%85%EC%95%88%EB%85%95%EF%BC%81.py)|
 |2638. 치즈|[링크](./%EB%B0%B1%EC%A4%80/Gold/2638.%E2%80%85%EC%B9%98%EC%A6%88/README.md)|
 |7576. 토마토|[링크](./%EB%B0%B1%EC%A4%80/Gold/7576.%E2%80%85%ED%86%A0%EB%A7%88%ED%86%A0/README.md)|
+|9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/N%EF%BC%8DQueen.py)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
 | ----- | ----- |
