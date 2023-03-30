@@ -12,7 +12,11 @@ def dfs(x):
 
 
 N = int(input())
-board1, board2, board3 = [[0 for _ in range(2 * N)] for _ in range(3)]
+# board1, board2, board3 = [[0 for _ in range(2 * N)] for _ in range(3)]
+board1 = [0 for _ in range(N)]
+board2 = [0 for _ in range(2 * N)]
+board3 = [0 for _ in range(2 * N)]
+# print(board1, board2, board3)
 cnt = 0
 dfs(0)
 
