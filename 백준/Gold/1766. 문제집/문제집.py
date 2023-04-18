@@ -1,6 +1,4 @@
 
-from collections import deque
-
 # 노드의 개수와 간선의 개수를 입력 받기
 V, E = map(int, input().split())
 
@@ -21,25 +19,25 @@ for _ in range(E):
 # 위상 정렬 함수
 def topology_sort():
     result = []
-    q = []
+    lst = []
 
     # 처음 시작할 때는 진입차수가 0인 노드를 큐에 삽입
     for i in range(1, V + 1):
         if indegree[i] == 0:
-            q.append(i)
+            lst.append(i)
 
-    # 큐가 빌 때까지 반복
-    while q:
-        q.sort()
-        # 큐에서 원소 꺼내기
-        now = q.pop(0)
+    # 리스트가 빌 때까지 반복
+    while lst:
+        lst.sort()
+        # 리스트에서 원소 꺼내기
+        now = lst.pop(0)
         result.append(now)
         # 해당 원소와 연결된 노드들의 진입차수에서 1 빼기
         for i in graph[now]:
             indegree[i] -= 1
             # 새롭게 진입차수가 0이 되는 노드를 큐에 삽입
             if indegree[i] == 0:
-                q.append(i)
+                lst.append(i)
 
     # 위상 정렬을 수행한 결과 출력
     for i in result:
