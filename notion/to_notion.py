@@ -5,8 +5,8 @@ from bs4 import BeautifulSoup
 import markdown2
 
 # Constants
-NOTION_API_KEY=os.environ['secret_WAmof5uRCNDbYFlI3L45uILo3gPEc81sO6HnpKt6BeB']
-NOTION_DATABASE_ID=os.environ['1f020439279b48869eff33b1f83a9405']
+NOTION_API_KEY=os.environ['NOTION_API_KEY']
+NOTION_DATABASE_ID=os.environ['NOTION_DATABASE_ID']
 
 # Helper functions
 
