@@ -17,7 +17,7 @@ function solution(keymap, targets) {
             }
         }
     }
-    console.log(keypad);
+    // console.log(keypad);
     
     const ans = [];
     for (let i = 0; i < targets.length; i++) {
@@ -27,23 +27,19 @@ function solution(keymap, targets) {
             let newcnt = cnt;
             for (let q = 0; q < keypad.length; q++) {
                 if ((targets[i][j] === keypad[q][0])) {
-                    console.log(targets[i][j], keypad[q][1]);
                     cnt += keypad[q][1];
                 }
             }
-            // console.log('나는 카운트', cnt, newcnt);
             if (newcnt === cnt) {
                 flag = false;
             }
-            // console.log('나는 플래그', flag);
         }
-        // // 목표 문자열 작성 불가 시 -1
+        // 목표 문자열 작성 불가 시 -1
         if (flag === false) {
             ans.push(-1);
         } else {
             ans.push(cnt);
         }
-        console.log('ans다', ans);
     }
     
     return ans;
