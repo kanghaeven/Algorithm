@@ -8,7 +8,7 @@ function solution(arr) {
         isDivide = arr.every((e) => whileCnt % e === 0);
         if (isDivide){
             answer = whileCnt;
-            break;
+            break; 
         }
         whileCnt++;
     }
