@@ -12,6 +12,6 @@ function solution(people, limit) {
             i++;
         }
         answer++;
-    }
+    } 
     return answer;
 }
