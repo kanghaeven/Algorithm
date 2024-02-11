@@ -1,20 +1,19 @@
 function solution(numbers, target) {
-    const arr = []
-    const makeTarget = (cnt, sum, arr)=>{
-        if (numbers.length === cnt) {
-            if (sum === target) {
-                arr.push(true);
-            };
-            return;
-        };
-        makeTarget(cnt + 1, sum + numbers[cnt], arr);
-        makeTarget(cnt + 1, sum - numbers[cnt], arr);
-        // console.log(cnt, sum, arr)
-    };
-    makeTarget(0, 0, arr);
-    return arr.length;
+    let answer = 0;
+        
+    function getAnswer(cnt, value) {
+        if(cnt < numbers.length) {
+            getAnswer(cnt + 1, value + numbers[cnt]);
+            getAnswer(cnt + 1, value - numbers[cnt]);
+        } else {
+            if (value === target) {
+                answer++;
+            }
+        }
+    }
+    
+    getAnswer(0, 0);
+    
+    return answer;
 }
-
-// n개의 음이 아닌 정수들
-// 순서 바꾸지 않고 적절히 더하거나 뺴서 타겟넘버 만드는 방법의 수
 
