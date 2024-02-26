@@ -1,6 +1,6 @@
 function solution(str1, str2) {
     let answer = 0;
-    let reg = /[^a-zA-Z]/gim;
+    let reg = /[^a-zA-Z]/g;
     const str = [[str1, []], [str2, []]];
     str.forEach(s => {
         s[0].split("").forEach((e, eidx) => {
@@ -13,7 +13,7 @@ function solution(str1, str2) {
             }
         })
     })
-    console.log(str[0][1], str[1][1]);
+    // console.log(str[0][1], str[1][1]);
     
     const arr = [[], []]
     str[0][1].forEach(e => {
