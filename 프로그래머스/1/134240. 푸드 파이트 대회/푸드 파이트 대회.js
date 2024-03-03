@@ -7,6 +7,5 @@ function solution(food) {
             }
         } 
     })
-    const rearr = answer.split("").reverse();
-    return answer + "0" + rearr.join("");
+    return answer + "0" + answer.split("").reverse().join("");
 }
