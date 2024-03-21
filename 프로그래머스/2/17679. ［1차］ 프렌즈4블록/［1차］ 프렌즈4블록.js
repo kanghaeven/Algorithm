@@ -3,7 +3,7 @@ function solution(m, n, board) {
     const map = board.map(b => b.split(""));
     
     while (true) {
-        let block = [];
+        const block = [];
         
         for (i = 0; i < m - 1; i++) {
             for (j = 0; j < n - 1 ; j++) {
@@ -21,7 +21,7 @@ function solution(m, n, board) {
         }
         
         block.forEach(b => {
-            let [x, y] = b;
+            const [x, y] = b;
             map[x][y] = 0;
             map[x][y+1] = 0;
             map[x+1][y] = 0;
