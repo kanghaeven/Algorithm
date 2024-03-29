@@ -1,0 +1,14 @@
+SELECT G.EMP_NO, EMP_NAME, 
+       CASE WHEN SUM(SCORE) / 2 >= 96 THEN 'S'
+            WHEN SUM(SCORE) / 2 >= 90 THEN 'A'
+            WHEN SUM(SCORE) / 2 >= 80 THEN 'B'
+            ELSE 'C' END GRADE, 
+       CASE WHEN SUM(SCORE) / 2 >= 96 THEN SAL * 0.2
+            WHEN SUM(SCORE) / 2 >= 90 THEN SAL * 0.15
+            WHEN SUM(SCORE) / 2 >= 80 THEN SAL * 0.1
+            ELSE 0 END BONUS 
+FROM HR_GRADE G
+JOIN HR_EMPLOYEES E
+ON G.EMP_NO = E.EMP_NO
+GROUP BY EMP_NO
+ORDER BY EMP_NO;
