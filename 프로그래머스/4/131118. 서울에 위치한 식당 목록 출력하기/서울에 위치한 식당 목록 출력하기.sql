@@ -1,8 +1,7 @@
-SELECT I.REST_ID, I.REST_NAME, I.FOOD_TYPE, I.FAVORITES, I.ADDRESS,
-    ROUND((SUM(R.REVIEW_SCORE) / COUNT(R.REVIEW_SCORE)), 2) AS SCORE
-FROM REST_INFO AS I
-JOIN REST_REVIEW AS R
-ON I.REST_ID = R.REST_ID
-WHERE I.ADDRESS LIKE "서울%"
-GROUP BY I.REST_ID
-ORDER BY SCORE DESC, FAVORITES DESC;
+select i.REST_ID, i.REST_NAME, i.FOOD_TYPE, i.FAVORITES, i.ADDRESS, round(avg(r.REVIEW_SCORE), 2) as SCORE 
+from rest_info as i
+join REST_REVIEW as r
+on i.rest_id = r.rest_id
+where ADDRESS like '서울%'
+group by rest_name
+order by score desc, favorites desc;
