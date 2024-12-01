@@ -1,4 +1,3 @@
-
 N, M = map(int,input().split())
 chess = [input() for _ in range(N)]
 cnt = []
@@ -7,8 +6,8 @@ for n in range(N-7): # 8 * 8로 자르고 무슨 색으로 시작하는지 판�
     for m in range(M-7): 
         w = 0 # 흰색으로 시작
         b = 0 # 검은색으로 시작
-        for i in range(n, n+8): # 열 시작 지점
-            for j in range(m, m+8): # 행 시작 지점
+        for i in range(n, n+8): # 세로열 중 i번째 시작 지점
+            for j in range(m, m+8): # 가로열 중 i번째 시작 지점
                 if (i+j) % 2 == 0: # 짝수인 경우 (0,0)
                     if chess[i][j] != 'W': # 검정이면
                         w += 1 # 흰색으로 칠하는 개수 카운트
@@ -29,7 +28,7 @@ print(min(cnt))
 # 3,0 = 3 B  3,1 = 4 W  3,2 = 5 B  3,3 = 6 W 
 
 
-# 시도
+
 # for i in range(M-8):
 #     for j in range(i, M-i):
 #         for k in range(N-8):
