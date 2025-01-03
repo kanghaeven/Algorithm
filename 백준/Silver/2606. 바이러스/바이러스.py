@@ -1,28 +1,22 @@
-# 연결되어 있는 모든 컴퓨터 바이러스 걸림
-# 1번과 연결되어 있는 자손 노드 수 출력
+nodes = int(input())
+edges = int(input())
+graph = [[] for _ in range(nodes + 1)]
+visited = [0 for _ in range(nodes + 1)]
 
-computers = int(input()) # 컴퓨터의 수
-edges = int(input()) 
-connect = [list() for i in range(computers + 1)]
-visited = [False for i in range(computers + 1)]
+for c in range(edges):
+    tmp = list(map(int, input().split()))
+    graph[tmp[0]] += [tmp[1]]
+    graph[tmp[1]] += [tmp[0]]
 
-for tc in range(edges):
-    start, end = map(int, input().split())
-    connect[start].append(end)
-    connect[end].append(start)
-# print(connect) [[], [2, 5], [1, 3, 5], [2], [7], [1, 2, 6], [5], [4]]
+# print(graph)
 
-cnt = 0
-def virus(num): # 1
-    global cnt # 최상위 카운트에 접근
-    virus_com = []
-    # [2, 5]
-    visited[num] = True # 1 
-    for j in connect[num]: # [1] # [2]
-      if visited[j] == False:
-        cnt += 1
-        virus_com.append(j)
-        virus(virus_com.pop())
-            
-virus(1)
-print(cnt)
+def dfs(start):
+    visited[start] = 1
+    for n in graph[start]:
+        # print("바이러스", n)
+        # print(visited)
+        if visited[n] == 0:
+            dfs(n)
+    return sum(visited)
+
+print(dfs(1) - 1)
