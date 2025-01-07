@@ -4,7 +4,7 @@ input = sys.stdin.readline
 [N, M, V] = list(map(int, input().split(' ')))
 
 arr = [list(map(int, input().strip().split(' '))) for _ in range(M)]
-arr.sort()
+
 graph = [[] for _ in range(N + 1)]
 
 for i in arr:
