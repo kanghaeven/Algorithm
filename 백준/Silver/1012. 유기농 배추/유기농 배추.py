@@ -1,35 +1,32 @@
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(100000)
+input = sys.stdin.readline
 
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
+di = [[0, -1], [-1, 0], [0, 1], [1, 0]]
 
-def dfs(x, y):
-
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-
-        if 0 <= nx < M and 0 <= ny < N:
-            if area[nx][ny] == 1:
-                area[nx][ny] = 0
-                dfs(nx, ny)
+def dfs(a, b):
+    ground[a][b] = -1
+    for f in range(4):
+        [nx, ny] =  a + di[f][0], b + di[f][1]
+        if nx >= 0 and ny >= 0 and nx < N and ny < M and ground[nx][ny] == 1:
+            dfs(nx, ny)
+    return
 
 T = int(input())
-for tc in range(T):
-    M, N, K = map(int,input().split())
-    area = [[0 for _ in range(N)] for _ in range(M)]
+for _ in range(T):
     cnt = 0
+    [M, N, K] = list(map(int, input().split(' ')))
+    ground = [[0 for _ in range(M)] for _ in range(N)]
 
-    for k in range(K):
-        x, y = map(int, input().split())
-        area[x][y] = 1
-    # pprint(area)
-
-    for x in range(M):
-        for y in range(N):
-            if area[x][y] == 1:
-                dfs(x,y)
-                cnt += 1  
-
+    for _ in range(K):
+        [X, Y] = list(map(int, input().split(' ')))
+        ground[Y][X] = 1
+    
+    for n in range(N):
+        for m in range(M):
+            if ground[n][m] == 1:
+                dfs(n, m)
+                cnt += 1
+    
     print(cnt)
+
