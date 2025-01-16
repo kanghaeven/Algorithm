@@ -16,10 +16,8 @@ def bfs(start):
     q = deque([])
     q.append(start)
     visited[start] = 0
-    cnt = 0
     while q:
         node = q.popleft()
-        cnt += 1
         for c in city[node]:
             if visited[c] == -1:
                 visited[c] = visited[node] + 1
