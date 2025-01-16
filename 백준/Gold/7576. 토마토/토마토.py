@@ -1,46 +1,61 @@
-
-dx = [0,1,0,-1]
-dy = [1,0,-1,0]
-
 from collections import deque
-def bfs(one): # 익은 토마토(들) (동시에) 탐색
-    level = 0 # 날짜
-    queue = deque()
-    for j in one:
-        queue.append([j[0], j[1], level]) # 각각 익은 토마토 탐색 위해 추가
+import sys
+input = sys.stdin.readline
 
-    while queue:
-        ripe = queue.popleft() # 탐색 대상
-        level = ripe[2] # 날짜 업데이트
-        for i in range(4): # 사방 탐색
-            nx = ripe[0] + dx[i]
-            ny = ripe[1] + dy[i]
-            if 0 <= nx < N and 0 <= ny < M:
-                if box[nx][ny] == 0: # 안 익었으면 익혀
+[M, N] = list(map(int, input().strip().split(' ')))
+box = [list(map(int, input().strip().split(' '))) for _ in range(N)]
+
+di = [[0, 1], [1, 0], [-1, 0], [0, -1]]
+
+def bfs(tomato):
+    q = deque([tomato])
+    for t in tomato:
+        box[t[0]][t[1]] = 1
+    cnt = -1
+
+    while q:        
+        arr = q.popleft()
+
+        if not arr:
+            break
+        
+        cnt += 1
+        for a in arr:
+            box[a[0]][a[1]] = 1
+
+        tmp = []
+        for a in arr:
+            for f in range(4):
+                nx, ny = a[0] + di[f][0], a[1] + di[f][1]
+                if 0 <= nx < N and 0 <= ny < M and box[nx][ny] == 0:
                     box[nx][ny] = 1
-                    # 그대로 cnt 넣으면 4번 카운트됨
-                    queue.append([nx, ny, level + 1]) # 다음 탐색 대상과 날짜 카운트
-    return level # 날짜 반환
+                    tmp.append((nx, ny))
+        q.append(tmp)
 
-M, N = map(int, input().split()) # M 가로칸 수, N 세로칸 수 
-box = [list(map(int, input().split())) for _ in range(N)] # 토마토 상태
-flag = True
+    for n in box:
+        if 0 in n:  
+            return -1
+    return cnt
 
-one = [] # 익은 토마토 리스트
-for x in range(N):
-    for y in range(M):
-        if box[x][y] == 1:
-            one.append([x, y])
-            
-result = bfs(one) # 최소 날짜 구하기
+    # checkzero = []
+    # for aa in range(N):
+    #     for bb in range(M):
+    #         if box[aa][bb] == 0:
+    #             checkzero.append([aa, bb])
 
-for xx in range(N):
-    for yy in range(M):
-        if box[xx][yy] == 0: # 탐색한 후에도 모두 익지 못하는 상황
-            flag = False 
+    # for check in checkzero:
+    #     for ff in range(4):
+    #         cx, cy = check[0] + di[ff][0], check[1] + di[ff][1]
+    #         if 0 <= cx < N and 0 <= cy < M and box[cx][cy] <= 0:
+    #             cnt = -1
+    
+    # return cnt
 
-if flag == True:
-    print(result)
-else:
-    print(-1)
+tomato = []
+for i in range(N):
+    for j in range(M):
+        if box[i][j] == 1:
+            tomato.append((i, j))
 
+print(bfs(tomato))
+        
